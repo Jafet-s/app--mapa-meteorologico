@@ -3,13 +3,11 @@ const city = document.getElementById('city-input').value.trim();
 const weatherCard = document.getElementById('weather-card');
 
 if (!city) {
-weatherCard.innerHTML = "<p style='color: #fee2e2;'> Por favor, escribe un lugar
-válido.</p>";
+weatherCard.innerHTML = "<p style='color: #fee2e2;'> Por favor, escribe un lugar válido.</p>";
 return;
 }
 
-weatherCard.innerHTML = "<p> Consultando base de datos geográfica y meteorológica
-remota...</p>";
+weatherCard.innerHTML = "<p> Consultando base de datos geográfica y meteorológica remota...</p>";
 
 try {
 // Consumo asíncrono a la API Nominatim de OpenStreetMap
@@ -19,8 +17,7 @@ city)}&limit=1`);
 const data = await response.json();
 
 if (data.length === 0) {
-weatherCard.innerHTML = "<p style='color: #fee2e2;'> No se encontraron datos para
-esa ubicación.</p>";
+		weatherCard.innerHTML = "<p style='color: #fee2e2;'> No se encontraron datos para esa ubicación.</p>";
 return;
 }
 
@@ -39,8 +36,7 @@ condition = "Tormenta Meteorológica";
 } else {
 temp = (Math.random() * (35 - 5) + 5).toFixed(1);
 humidity = Math.floor(Math.random() * (100 - 40) + 40);
-condition = ["Despejado", "Nublado", "Lluvia Ligera", "Tormenta
-Eléctrica"][Math.floor(Math.random() * 4)];
+		condition = ["Despejado", "Nublado", "Lluvia Ligera", "Tormenta Eléctrica"][Math.floor(Math.random() * 4)];
 }
 
 // Renderizado e inyección dinámica unificada en el DOM
@@ -67,7 +63,6 @@ ${lugar.lon}</p>
 `;
 } catch (error) {
 console.error(error);
-weatherCard.innerHTML = "<p style='color: #fee2e2;'> Error en la comunicación
-asíncrona con el servidor.</p>";
+	weatherCard.innerHTML = "<p style='color: #fee2e2;'> Error en la comunicación asíncrona con el servidor.</p>";
 }
 });
